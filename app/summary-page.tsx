@@ -15,7 +15,7 @@ export default function SummaryPage({ events }: { events: Event[] }) {
     return new Date(a.Start).getTime() - new Date(b.Start).getTime();
   });
 
-  
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="mx-auto max-w-2xl">
@@ -25,7 +25,7 @@ export default function SummaryPage({ events }: { events: Event[] }) {
             <span key={i}>
               {i > 0 && (
                 <Link href={CONSTS.DESCRIPTION.linkUrl}
-                className="hover:underline"
+                className="underline"
                 >
                   {CONSTS.DESCRIPTION.linkText}
                 </Link>
