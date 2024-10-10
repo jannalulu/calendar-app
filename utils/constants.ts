@@ -7,15 +7,19 @@ export type NavItem = {
 };
 
 export const CONSTS = {
-  TITLE: "Example Conference Weekend",
+  TITLE: "EV Events Calendar",
   DESCRIPTION:
-    "An Example Conference is happening from August 23 - 25, 2024 at Lighthaven. Check out the schedules for the main event and afterparty below!",
+  {
+    text: "Events that EV people may find interesting, add your own here!",
+    linkText: "here",
+    linkUrl: "https://airtable.com/app5DkpLXHBGd9bAE/pagRHdFTlDZONgNUD/form"
+  },
   MULTIPLE_EVENTS: true,
   // If you have multiple events, add your events to the nav bar below
   // If you only have one event, you can leave the array empty
   // Find available icons at https://heroicons.com/
   NAV_ITEMS: [
-    { name: "Conference", href: "/Conference", icon: UserGroupIcon },
-    { name: "After Party", href: "/After-Party", icon: CakeIcon },
+    { name: "Test0", href: "/Test0", icon: UserGroupIcon },
+    { name: "Test1", href: "/Test1", icon: CakeIcon },
   ] as NavItem[],
 };

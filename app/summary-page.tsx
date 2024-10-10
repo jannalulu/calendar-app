@@ -3,29 +3,41 @@ import {
   ArrowRightIcon,
   CalendarIcon,
   LinkIcon,
+  MapPinIcon,
 } from "@heroicons/react/16/solid";
 import { DateTime } from "luxon";
 import Link from "next/link";
 import { Event } from "@/db/events";
 import { CONSTS } from "@/utils/constants";
 
-export default async function SummaryPage(props: { events: Event[] }) {
-  const { events } = props;
+export default function SummaryPage({ events }: { events: Event[] }) {
   const sortedEvents = events.sort((a, b) => {
     return new Date(a.Start).getTime() - new Date(b.Start).getTime();
   });
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="mx-auto max-w-2xl">
         <h1 className="text-4xl font-bold mt-5">{CONSTS.TITLE}</h1>
-        <p className="mt-3">{CONSTS.DESCRIPTION}</p>
+        <p className="mt-3">
+          {CONSTS.DESCRIPTION.text.split(CONSTS.DESCRIPTION.linkText).map((part, i) => (
+            <span key={i}>
+              {i > 0 && (
+                <Link href={CONSTS.DESCRIPTION.linkUrl}>
+                  {CONSTS.DESCRIPTION.linkText}
+                </Link>
+              )}
+              {part}
+            </span>
+          ))}
+        </p>  
         <div className="flex flex-col gap-8 sm:pl-5 mt-10">
           {sortedEvents.map((event) => (
             <div key={event.Name}>
               <h1 className="sm:text-2xl text-xl font-bold">{event.Name}</h1>
               <div className="flex text-gray-500 text-xs mt-1 gap-5 font-medium">
                 <span className="flex gap-1 items-center">
-                  <CalendarIcon className="3 w-3 stroke-2" />
+                  <CalendarIcon className="h-3 w-3 stroke-2" />
                   <span>
                     {DateTime.fromISO(`${event.Start}T12:00:00.000-07:00`)
                       .setZone("America/Los_Angeles")
@@ -43,15 +55,19 @@ export default async function SummaryPage(props: { events: Event[] }) {
                   <LinkIcon className="h-3 w-3 stroke-2" />
                   <span>{event.Website}</span>
                 </a>
+                <span className="flex gap-1 items-center">
+                  <MapPinIcon className="h-3 w-3 stroke-2" />
+                  <span>{event["Location names"]}</span>
+                </span>
               </div>
               <p className="text-gray-900 mt-2">{event.Description}</p>
-              <Link
-                href={`/${event.Name.replace(" ", "-")}`}
+              <a
                 className="font-semibold text-rose-400 hover:text-rose-500 flex gap-1 items-center text-sm justify-end mt-2"
+                href={`https://${event["Event link"]}`}
               >
-                View schedule
+                Learn more
                 <ArrowRightIcon className="h-4 w-4" />
-              </Link>
+              </a>
             </div>
           ))}
         </div>
