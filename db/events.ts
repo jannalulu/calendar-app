@@ -6,10 +6,11 @@ export type Event = {
   Description: string;
   Website: string;
   Guests?: string[];
-  Start: string;
-  End: string;
+  "Start": string;
+  //"Start time": string;
+  "End": string;
   "Location names"?: string[];
-  "Event link": string;
+  //"End time": string;
 };
 
 const eventFields = [
@@ -17,9 +18,10 @@ const eventFields = [
   "Description",
   "Website",
   "Start",
+  //"Start time",
   "End",
+  //"End time",
   "Location names",
-  "Event link",
 ];
 
 const fieldsIfMultipleEvents = [

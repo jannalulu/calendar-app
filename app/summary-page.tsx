@@ -66,7 +66,7 @@ export default function SummaryPage({ events }: { events: Event[] }) {
               <p className="text-gray-900 mt-2">{event.Description}</p>
               <a
                 className="font-semibold text-rose-400 hover:text-rose-500 flex gap-1 items-center text-sm justify-end mt-2"
-                href={`https://${event["Event link"]}`}
+                href={`https://${event.Website}`}
               >
                 Learn more
                 <ArrowRightIcon className="h-4 w-4" />
