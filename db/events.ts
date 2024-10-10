@@ -9,6 +9,7 @@ export type Event = {
   Start: string;
   End: string;
   "Location names"?: string[];
+  "Event link": string;
 };
 
 const eventFields = [
@@ -17,6 +18,8 @@ const eventFields = [
   "Website",
   "Start",
   "End",
+  "Location names",
+  "Event link",
 ];
 
 const fieldsIfMultipleEvents = [
