@@ -14,6 +14,8 @@ export const CONSTS = {
     linkText: "here",
     linkUrl: "https://airtable.com/app5DkpLXHBGd9bAE/pagRHdFTlDZONgNUD/form"
   },
+  FULL_DESCRIPTION: "Events that EV people may find interesting, add your own here! https://airtable.com/app5DkpLXHBGd9bAE/pagRHdFTlDZONgNUD/form",
+  
   MULTIPLE_EVENTS: true,
   // If you have multiple events, add your events to the nav bar below
   // If you only have one event, you can leave the array empty
