@@ -28,23 +28,28 @@ const fieldsIfMultipleEvents = [
 ];
 
 export async function getEvents() {
-  const events: Event[] = [];
-  await base("Events")
-    .select({
-      fields: [
-        ...eventFields,
-        ...(CONSTS.MULTIPLE_EVENTS ? fieldsIfMultipleEvents : [])
-      ],
-    })
-    .eachPage(function page(records: any, fetchNextPage: any) {
-      records.forEach(function (record: any) {
-        if (record.fields.Start && record.fields.End) {
-          events.push(record.fields);
-        }
+  try {
+    const events: Event[] = [];
+    await base("Events")
+      .select({
+        fields: [
+          ...eventFields,
+          ...(CONSTS.MULTIPLE_EVENTS ? fieldsIfMultipleEvents : [])
+        ],
+      })
+      .eachPage(function page(records: any, fetchNextPage: any) {
+        records.forEach(function (record: any) {
+          if (record.fields.Start && record.fields.End) {
+            events.push(record.fields);
+          }
+        });
+        fetchNextPage();
       });
-      fetchNextPage();
-    });
-  return events;
+    return events;
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return [];
+  }
 }
 
 export async function getEventByName(name: string) {
