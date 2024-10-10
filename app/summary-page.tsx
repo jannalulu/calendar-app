@@ -23,7 +23,9 @@ export default function SummaryPage({ events }: { events: Event[] }) {
           {CONSTS.DESCRIPTION.text.split(CONSTS.DESCRIPTION.linkText).map((part, i) => (
             <span key={i}>
               {i > 0 && (
-                <Link href={CONSTS.DESCRIPTION.linkUrl}>
+                <Link href={CONSTS.DESCRIPTION.linkUrl}
+                className="hover:underline"
+                >
                   {CONSTS.DESCRIPTION.linkText}
                 </Link>
               )}
