@@ -21,7 +21,7 @@ const fontVars = [roboto.variable, monteserrat.variable].join(" ");
 
 export const metadata: Metadata = {
   title: CONSTS.TITLE,
-  description: CONSTS.DESCRIPTION,
+  description: CONSTS.FULL_DESCRIPTION,
   icons: {
     icon: "/favicon.ico",
   },
