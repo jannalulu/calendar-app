@@ -56,7 +56,8 @@ export default function SummaryPage({ events }: { events: Event[] }) {
                   href={`https://${event.Website}`}
                 >
                   <LinkIcon className="h-3 w-3 stroke-2" />
-                  <span>{event.Website}</span>
+                  <span>{event.Website.slice(0, 25)}
+                  {event.Website.length > 25 && '...'}</span>
                 </a>
                 <span className="flex gap-1 items-center">
                   <MapPinIcon className="h-3 w-3 stroke-2" />
